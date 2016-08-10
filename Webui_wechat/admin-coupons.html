@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+	<meta name="google" content="notranslate">
+	<title>大白 - 商户</title>
+	<link rel='stylesheet' id='global-css'  href='/css/style.css?ver=4.4.2' type='text/css' media='all' />
+	<script type='text/javascript' src='/script/libs.min.js?ver=4.4.2'></script>
+	<script type='text/javascript' src='/script/functions.js?ver=4.4.2'></script>
+</head>
+<body>
+	<div id="wrap" class="wrap">
+		<div class="container header-container">
+			<header class="header">
+				<div class="avatar">
+					<a href="admin-index.html"><img src="images/avatar.png"></a>
+				</div>
+				<div class="content">
+					<h1><a class="link" href="admin-coupons-add.html"><i class="icon-css-plus"></i>添加优惠券</a></h1>
+				</div>
+				<div class="meta">
+				</div>
+			</header>
+			
+			<section class="js-disabled-list ui-media_box ui-media_small_appmsg icon-list">
+				<div v-if="coupons.list.length === 0" class="not-found">
+					<h2>没有找到优惠券</h2>
+				</div>
+
+
+				<div class="coupons-list  js-swiped-3" v-swiped>
+					<div v-for="item in coupons.list" v-if="!item.has_offline" class="coupons-item js-item  js-remove-item">
+						<div class="item">
+							<h2>{{item.title}}</h2>
+							<time>{{item.time}}前有效</time>
+							<span class="price">{{item.price}}元</span>
+						</div>
+						<a v-bind:href="item.link" class="ui-btn ui-btn_mini ui-btn_primary edit">编辑</a>
+						<span v-on:click="removeCoupon($event, item)" class="remove">删除</span>
+					</div>
+
+					<div v-for="item in coupons.list" v-if="item.has_offline" class="coupons-item js-item  js-remove-item">
+						<div class="item offline">
+							<h2>{{item.title}}</h2>
+							<time>{{item.time}}前有效</time>
+							<span class="price">{{item.price}}元</span>
+						</div>
+						<a v-bind:href="item.link" class="ui-btn ui-btn_mini ui-btn_primary edit">编辑</a>
+						<span v-on:click="removeCoupon($event, item)" class="remove">删除</span>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+		$(document).ready(function () {
+			var new_data = {
+				total_price : 998,
+				current_page : 1,
+				max_page : 1,
+				list: [
+					{
+						title: '满20使用',
+						price: 56,
+						time: '2016/12/30',
+						link: 'admin-coupons-add.html',
+						has_offline: false
+					},
+					{
+						title: '满20使用',
+						price: 56,
+						time: '2016/12/30',
+						link: 'admin-coupons-add.html',
+						has_offline: false
+					},
+					{
+						title: '满20使用',
+						price: 56,
+						time: '2016/12/30',
+						link: 'admin-coupons-add.html',
+						has_offline: true
+					},
+					{
+						title: '满20使用',
+						price: 56,
+						time: '2016/12/30',
+						link: 'admin-coupons-add.html',
+						has_offline: false
+					},
+					{
+						title: '满20使用',
+						price: 56,
+						time: '2016/12/30',
+						link: 'admin-coupons-add.html',
+						has_offline: false
+					},
+					{
+						title: '满20使用',
+						price: 56,
+						time: '2016/12/30',
+						link: 'admin-coupons-add.html',
+						has_offline: true
+					}
+				]
+			};
+			
+			// 重置数据
+			$.subscribe('vuejs.ready', function (ev, ele) {
+				vm.$set('coupons', new_data);
+			});
+		});
+	</script>
+</body>
+</html>
