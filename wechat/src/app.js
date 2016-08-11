@@ -11,6 +11,7 @@ import httpConfig from './config/http.config.js';
 
 import App from './app.vue';
 import Hello from './components/hello.vue';
+import AddCard from './components/addcard.vue';
 
 const router = new Router({
 	saveScrollPosition: true,
@@ -21,11 +22,15 @@ router.map({
 	'/hello': {
 		name: 'hello',
 		component: Hello
+	},
+	'/addcard': {
+		name: 'addcard',
+		component: AddCard
 	}
 });
 
 router.redirect({
-	'*': '/hello'
+	'*': '/addcard'
 });
 
 router.start(App, '#app');
