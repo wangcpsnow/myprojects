@@ -18,6 +18,15 @@ ul,li{
 h1,h2,h3,h4,h5{
 	font-weight:normal;
 }
+.fleft{
+	float:left;
+}
+.fright{
+	float:right;
+}
+.clearfix{
+	overflow:hidden;zoom:1;
+}
 </style>
 
 <script>
