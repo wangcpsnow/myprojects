@@ -9,6 +9,12 @@ $ npm install -d
 $ npm run localdev
 ```
 
+or in production
+
+```js
+$ npm run production
+```
+
 HTTP server listening on port `5657`.
 
 
