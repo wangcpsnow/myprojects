@@ -1,3 +1,4 @@
+/*global  process.env:true*/
 import Vue from 'vue';
 
 import Router from 'vue-router';
@@ -7,7 +8,7 @@ import VueAjax from 'vue-resource';
 Vue.use(VueAjax);
 
 import httpConfig from './config/http.config.js';
-// Vue.http.options.root = httpConfig[ENV]; // ENV from webpack plugins DefinePlugin
+Vue.http.options.root = httpConfig[process.env]; // ENV from webpack plugins DefinePlugin
 
 import App from './app.vue';
 import Hello from './components/hello.vue';
@@ -23,10 +24,10 @@ router.map({
 		name: 'hello',
 		component: Hello
 	},
-	'/addcard': {
-		name: 'addcard',
-		component: AddCard
-	}
+    '/addcard': {
+        name: 'addcard',
+        component: AddCard
+    }
 });
 
 router.redirect({

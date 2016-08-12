@@ -18,6 +18,19 @@ export default {
 		filename: '[name].js'
 	},
 	module: {
+		{{#lint}}
+		preLoaders: [{
+			test: /\.vue$/,
+			loader: 'eslint',
+			include: rootPath,
+			exclude: path.join(rootPath, 'node_modules/')
+		}, {
+			test: /\.js$/,
+			loader: 'eslint',
+			include: rootPath,
+			exclude: path.join(rootPath, 'node_modules/')
+		}],
+		{{/lint}}
 		loaders: [{
 			test: /\.vue$/,
 			loader: 'vue'
@@ -45,6 +58,11 @@ export default {
 			}
 		}]
 	},
+	{{#lint}}
+	eslint: {
+		formatter: require('eslint-friendly-formatter')
+	},
+	{{/lint}}
 	resolve: {
 		extensions: ['', '.js', '.vue'],
 		alias: {
