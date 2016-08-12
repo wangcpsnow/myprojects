@@ -1,8 +1,8 @@
 {
-  "name": "my-project",
+  "name": "wechat",
   "version": "1.0.0",
   "description": "A Vue.js project",
-  "author": "王春鹏 <wangcpsnow@gmail.com>",
+  "author": "spring <wangcpsnow@gmail.com>",
   "private": true,
   "scripts": {
     "localdev": "node build/app.babel.server.js --env=localdev",
