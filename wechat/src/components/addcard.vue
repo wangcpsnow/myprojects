@@ -20,7 +20,7 @@
 				<li v-for="item in items">
 					<dl>
 						<dt class="fleft">
-							<input type='checkbox' v-model="checked" value="{{item.id}}"/>
+							<input type='checkbox' class="mui-checkbox" v-model="checked" value="{{item.id}}"/>
 						</dt>
 						<dd>
 							<div class='img_wrap fleft'><img src="../assets/img/logo.png"/></div>
@@ -37,7 +37,7 @@
 		<div class="footer">
 			<div class="fleft" @click="click_check_all">
 				<label>
-					<input type='checkbox' class="all" v-model="allChecked"/>全选
+					<input type='checkbox' class="mui-checkbox" class="all" v-model="allChecked"/>全选
 				</label>
 			</div>
 			<div class="fright">
@@ -48,6 +48,13 @@
 	</div>
 </template>
 <style scoped>
+	@font-face {
+	    font-family: 'iconfont';
+	    /* IE9*/
+	    src: url("http://at.alicdn.com/t/font_1433757735_1585197.eot");
+	    /* IE6-IE8 */
+	    src: url("http://at.alicdn.com/t/font_1433757735_1585197.eot?#iefix") format("embedded-opentype"), url("http://at.alicdn.com/t/font_1433757735_1585197.woff") format("woff"), url("http://at.alicdn.com/t/font_1433757735_1585197.ttf") format("truetype"), url("http://at.alicdn.com/t/font_1433757735_1585197.svg#iconfont") format("svg");
+	}
 	input{
 		border: 0 none;
 	}
@@ -116,6 +123,27 @@
 	.footer a.ok{
 		display:inline-block;width:2rem;height:.9rem;background-color: #3bcbcb;color:#FFF;
 		text-align:center;line-height:.9rem;margin-left:.24rem;
+	}
+
+	.mui-checkbox{
+	    position: relative;width: 25px;height: 25px;
+	    margin-right: 10px;background-color: #FFFFFF;
+	    border: solid 1px #d9d9d9;border-top-left-radius: 20px;
+	    border-top-right-radius: 20px;border-bottom-left-radius: 20px;
+	    border-bottom-right-radius: 20px;background-clip: padding-box;
+	    display: inline-block;-webkit-appearance: none;
+	}
+	.mui-checkbox:checked:before{
+	    display: inline-block;margin-top: 1px;
+	    margin-left: 2px;font-family: iconfont;
+	    content: "\e667";
+	    line-height: 22px;
+	    color: #FFFFFF;
+	    font-size: 18px;
+	}
+	.mui-checkbox:checked{
+	    background-color: #18b4ed;
+    	border: solid 1px #FFFFFF;
 	}
 </style>
 <script>
