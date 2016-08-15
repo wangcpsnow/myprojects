@@ -27,6 +27,9 @@ h1,h2,h3,h4,h5{
 .clearfix{
 	overflow:hidden;zoom:1;
 }
+label, input, select{
+	vertical-align: middle;
+}
 </style>
 
 <script>
