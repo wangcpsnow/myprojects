@@ -23,11 +23,20 @@
 }
 </style>
 <script>
+import store from 'store';
 export default {
 	name: 'Hello',
+	vuex: {
+		getters: {
+			loading() {
+				return store.state.loading;
+			}
+		}
+	},
 	methods: {
 		click_btn() {
-			alert("click");
+			this.$http.get('/someUrl', [options]).then(successCallback, errorCallback);
+			this.$http.post('/someUrl', [body], [options]).then(successCallback, errorCallback);
 		}
 	}
 };

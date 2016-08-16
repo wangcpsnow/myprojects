@@ -1,3 +1,3 @@
-const mutations = {};
-
-export default mutations;
+export const LOADING = (state, showOrHide) => {
+    state.loading = showOrHide;
+};
