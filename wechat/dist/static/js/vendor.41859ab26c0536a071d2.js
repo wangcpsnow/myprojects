@@ -1,4 +1,4 @@
-webpackJsonp([2,0],{1:function(t,e,n){(function(e){/*!
+webpackJsonp([2,0],{2:function(t,e,n){(function(e){/*!
 	 * Vue.js v1.0.26
 	 * (c) 2016 Evan You
 	 * Released under the MIT License.
