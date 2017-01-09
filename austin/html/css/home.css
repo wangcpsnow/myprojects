@@ -1,0 +1,44 @@
+body{
+	background-color:#000;
+	color: #FFF;
+}
+#header,#nav,#page{
+	width:1000px;
+	margin:0 auto;
+}
+#header{
+	height:180px;
+}
+
+#nav{
+	padding-bottom: 10px;
+	overflow: hidden;
+}
+#nav .menu{
+	float: left;width: 16.6%;
+	text-align: center;
+	line-height: 30px;
+}
+#nav .menu .sep{
+	height:2px;background-color: #cad52d;
+	width: 15px;
+	position: relative;top: 14px;left:-15px;
+}
+#nav .menu nav{
+	position:relative;left:-7px;
+}
+#nav .menu .separator{
+	height:3px;background-color: #cad52d;
+	width: 90%;
+}
+
+#page {
+	padding: 0 0px;
+	margin: 10px auto;
+}
+#page .content{
+	width: 65%;
+}
+#page .side{
+	width: 33%;
+}
