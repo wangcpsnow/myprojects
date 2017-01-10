@@ -2,12 +2,27 @@ body{
 	background-color:#000;
 	color: #FFF;
 }
-#header,#nav,#page{
+#header,#nav,#page,#footer{
 	width:1000px;
 	margin:0 auto;
 }
 #header{
 	height:180px;
+	padding: 20px 0;
+}
+#header .left{
+	width: 50%;
+}
+#header .left img.logo{
+	height: 160px;
+	margin-top:10px;
+}
+#header ul img{
+	height: 80px;
+	margin-bottom:10px;
+}
+#header li img.two{
+	margin-right:20px;
 }
 
 #nav{
@@ -18,6 +33,7 @@ body{
 	float: left;width: 16.6%;
 	text-align: center;
 	line-height: 30px;
+	font-size:20px;
 }
 #nav .menu .sep{
 	height:2px;background-color: #cad52d;
@@ -39,6 +55,56 @@ body{
 #page .content{
 	width: 65%;
 }
+
+#page .content .lives{
+
+}
+#page .content .lives h3{
+	border-bottom: 3px solid #cad52d;
+	margin-bottom: 5px;
+}
+#page .content .lives .catalog{
+	height: 600px;
+	width:30%;
+}
+#page .content .lives ul{
+	width: 70%;
+}
+#page .content .news{
+	height:200px;
+	margin:10px 0;
+}
+
+
 #page .side{
 	width: 33%;
+}
+#page .side .links{
+	margin: 50px 0 50px 16px;
+}
+#page .side .links li{
+	float:left;
+	margin:15px 0 0 15px;
+}
+#page .side .links img{
+	width: 70px;
+}
+
+#footer{
+	height:260px;
+}
+
+.gray{
+	background-color: #9e9e9f;
+	color: #000;
+	font-weight: bolder;
+	font-size: 30px;
+	position:relative;
+	font-family: "Microsoft Yahei";
+}
+.gray label{
+	position:absolute;
+	top:50%;left:50%;
+	line-height: 30px;
+	margin:-15px 0 0 -60px;
 }

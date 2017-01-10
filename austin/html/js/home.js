@@ -37,34 +37,27 @@ function imgscrool(obj) {
             move();
         }, 2000)
     })
-
     /*向左的按钮*/
     $(obj + " .banner .btn_l").stop(true).delay(800).click(function() {
         i--
         move();
     })
-
     /*向右的按钮*/
     $(obj + " .banner .btn_r").stop(true).delay(800).click(function() {
         i++
         move()
     })
-
     function move() {
-
         if (i == size) {
             $(obj + " .banner  .img").css({ left: 0 })
             i = 1;
         }
-
         // 修改轮播没屏宽度
         if (i == -1) {
             $(obj + " .banner .img").css({ left: -(size - 1) * width })
             i = size - 2;
         }
-
         $(obj + " .banner .img").stop(true).animate({ left: -i * width }, 500)
-
         if (i == size - 1) {
             $(obj + " .banner .num li").eq(0).addClass("on").siblings().removeClass("on")
         } else {
