@@ -2,6 +2,9 @@ body{
 	background-color:#000;
 	color: #FFF;
 }
+img{
+	width:100%;
+}
 #header,#nav,#page,#footer{
 	width:1000px;
 	margin:0 auto;
@@ -9,6 +12,9 @@ body{
 #header{
 	height:180px;
 	padding: 20px 0;
+}
+#header img{
+	width:auto;
 }
 #header .left{
 	width: 50%;
@@ -53,23 +59,44 @@ body{
 	margin: 10px auto;
 }
 #page .content{
-	width: 65%;
+	width: 70%;
 }
 
-#page .content .lives{
-
-}
-#page .content .lives h3{
+#page .content .lives .title{
+	margin-bottom: 15px;
 	border-bottom: 3px solid #cad52d;
-	margin-bottom: 5px;
+	font-size: 20px;
+	padding: 5px 0;
+}
+#page .lives .catalog,#page .lives .matches{
+	margin-bottom:-9999px;
+	padding-bottom:9999px;
 }
 #page .content .lives .catalog{
 	height: 600px;
-	width:30%;
+	width:25%;
+	margin-right:4%;
 }
 #page .content .lives ul{
 	width: 70%;
 }
+#page .lives .matches li{
+	border-bottom: 3px solid #cad52d;
+	margin-bottom: 15px;
+}
+#page .lives .matches h4{
+	font-size: 22px;
+	margin-bottom:3px;
+}
+#page .lives .matches .desc{
+	font-size: 26px;position: relative;top:-18px;
+}
+#page .lives .matches .desc em{
+	display: inline-block;width:12px;height:12px;
+	background-color: #cad52d;border-radius: 50%;
+	position:relative;top:-2px;right:5px;
+}
+
 #page .content .news{
 	height:200px;
 	margin:10px 0;
@@ -77,17 +104,24 @@ body{
 
 
 #page .side{
-	width: 33%;
+	width: 28%;
+	margin-left:2%;
 }
 #page .side .links{
-	margin: 50px 0 50px 16px;
+	margin: 50px 0 50px 15px;
 }
 #page .side .links li{
-	float:left;
-	margin:15px 0 0 15px;
+	float: left;
+	margin: 15px 0 0 4%;
+	width: 26%;
 }
-#page .side .links img{
-	width: 70px;
+#page .side .teams li{
+	margin-bottom:20px;
+	text-align: center;
+}
+#page .side .teams li img{
+	height: 42px;
+	width:auto;
 }
 
 #footer{
