@@ -1,6 +1,6 @@
 //1个是父级名。
 $(function() {
-    // imgscrool('#ban1');
+    imgscrool('.content');
 })
 
 function imgscrool(obj) {
