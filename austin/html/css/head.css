@@ -39,6 +39,9 @@ body{
 	padding-bottom: 10px;
 	overflow: hidden;
 }
+#nav a{
+	color: #FFF;
+}
 #nav .menu{
 	float: left;width: 16.6%;
 	text-align: center;
@@ -58,7 +61,7 @@ body{
 	width: 90%;
 }
 
-#footer{
+#footer.gray{
 	height:260px;
 }
 #footer label{
