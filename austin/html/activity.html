@@ -6,6 +6,11 @@
 	<link rel="stylesheet" type="text/css" href="./css/public/reset.css">
 	<link rel="stylesheet" type="text/css" href="./css/public/common.css">
 	<link rel="stylesheet" type="text/css" href="./css/head.css">
+	<style>
+		#page{
+			margin: 20px auto;
+		}
+	</style>
 </head>
 <body>
 	<div id="header" class="clearfix">
@@ -65,33 +70,12 @@
 			</a>
 		</div>
 	</div>
-	<div id="page"></div>
+	<div id="page">
+		<img src="./images/activity/activity.png" alt="">
+	</div>
 
 	<div id="footer">
 		<img src="./images/home/footer.png" alt="footer">
 	</div>
-	<script>
-		var search = location.search,
-			src = 1;
-		if(search.length){
-			search = search.substr(1);
-			var arr = search.split("&");
-			for(var i=0,l=arr.length;i<l;i++){
-				var item = arr[i].split("=");
-				if(item[0] == "id"){
-					src = item[1];
-				}
-			}
-		}
-		addImg(src);
-
-		function addImg(src){
-			src = "./images/team/"+ src +".png";
-			var oPage = document.getElementById("page"),
-				oImg = document.createElement("img");
-			oImg.src = src;
-			oPage.appendChild(oImg);
-		}
-	</script>
 </body>
 </html>
