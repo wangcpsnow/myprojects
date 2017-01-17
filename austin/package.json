@@ -4,7 +4,6 @@
   "description": "html for austin",
   "main": "index.js",
   "dependencies": {
-    "express": "^4.14.0",
     "gulp": "^3.9.1",
     "gulp-connect": "^5.0.0",
     "gulp-file-include": "^1.0.0",
