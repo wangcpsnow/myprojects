@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Fight</title>
+	@@include("./components/css.html")
+</head>
+<body>
+@@include("./components/head.html")
+	<div id="page"></div>
+@@include("./components/footer.html")
+
+	<script>
+		var search = location.search,
+			src = 1;
+		if(search.length){
+			search = search.substr(1);
+			var arr = search.split("&");
+			for(var i=0,l=arr.length;i<l;i++){
+				var item = arr[i].split("=");
+				if(item[0] == "id"){
+					src = item[1];
+				}
+			}
+		}
+		addImg(src);
+
+		function addImg(src){
+			src = "./images/team/"+ src +".png";
+			var oPage = document.getElementById("page"),
+				oImg = document.createElement("img");
+			oImg.src = src;
+			oPage.appendChild(oImg);
+		}
+	</script>
+</body>
+</html>
