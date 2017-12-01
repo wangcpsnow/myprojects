@@ -1,7 +1,7 @@
 <template>
     <div id="app">
     	<div class="nav">
-			nav
+			<img src="./assets/imgs/logo.png" alt="logo">
 		</div>
 		<div class="wrap">
 			<sidebar></sidebar>
@@ -23,19 +23,25 @@ export default {
 }
 </script>
 
-<style>
+<style lang="stylus">
 #app {
-	font-family: 'Avenir', Helvetica, Arial, sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+	/*-webkit-font-smoothing: antialiased;*/
+	/*-moz-osx-font-smoothing: grayscale;*/
 }
 .nav {
 	height: 110px;
 	background-color: #0b0b0b;
+	img {
+		margin: 23px;
+		width: 226px;
+	}
 }
 .wrap {
 	overflow: hidden;
 	zoom: 1;
+	background: transparent url('./assets/imgs/main-bg.jpg') no-repeat top left;
+	background-size: cover;
 }
 .sidebar, .main {
 	margin-bottom: -999px;
@@ -46,6 +52,6 @@ export default {
 	width: 220px;
 }
 .main {
-	margin-left: 220px;
+	margin-left: 250px;
 }
 </style>

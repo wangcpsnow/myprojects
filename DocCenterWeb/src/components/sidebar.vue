@@ -39,7 +39,7 @@
 	
 </script>
 
-<style>
+<style lang="stylus">
 .sidebar {
 	background-color: #3e4349;
 	color: #FFF;
@@ -49,10 +49,9 @@
 .sidebar li {
 	line-height: 47px;
 	margin-bottom: 15px;
-	border: 1px solid #707987;
-	border-left: 0 none;
-	background-color: #727b89;
 	padding-left: 14px;
+	background: transparent url('../assets/imgs/menubg.png') no-repeat center;
+	background-size: contain;
 }
 .sidebar li a {
 	color: #FFF;
@@ -66,7 +65,7 @@
 	
 }
 .sidebar li s.sleft {
-	border-left-color: #727b89;
+	border-left-color: #4e545b;
 	position: relative;
 	left: -18px;
 }
