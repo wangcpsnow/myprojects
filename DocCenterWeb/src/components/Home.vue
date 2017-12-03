@@ -7,17 +7,17 @@
 			</h4>
 			<ul>
 				<li>
-					<h4 class="title">This is title <img src="../assets/imgs/link.png" alt="link"></h4>
+					<h4 class="title">This is title <img src="../assets/imgs/link.png" class="link" alt="link"/></h4>
 					<p class="txt">可用于快速搭建大型单页应用。该工具提供开箱即用的构建工具配置，带来现代化的前端开发流程。只需几分钟即可创建并启动一个带热重载、保存时静态检查以及可用于生产环境的构建配置的项目</p>
 					<span class="time">2017.10.31 12:20</span>	
 				</li>
 				<li>
-					<h4 class="title">This is title <img src="../assets/imgs/link.png" alt="link"></h4>
+					<h4 class="title">This is title <img src="../assets/imgs/link.png" class="link" alt="link"/></h4>
 					<p class="txt">可用于快速搭建大型单页应用。该工具提供开箱即用的构建工具配置，带来现代化的前端开发流程。只需几分钟即可创建并启动一个带热重载、保存时静态检查以及可用于生产环境的构建配置的项目</p>
 					<span class="time">2017.10.31 12:20</span>	
 				</li>
 				<li>
-					<h4 class="title">This is title <img src="../assets/imgs/link.png" alt="link"></h4>
+					<h4 class="title">This is title <img src="../assets/imgs/link.png" class="link" alt="link"/></h4>
 					<p class="txt">可用于快速搭建大型单页应用。该工具提供开箱即用的构建工具配置，带来现代化的前端开发流程。只需几分钟即可创建并启动一个带热重载、保存时静态检查以及可用于生产环境的构建配置的项目</p>
 					<span class="time">2017.10.31 12:20</span>	
 				</li>
@@ -28,35 +28,35 @@
 			<ul class="hot">
 				<li>
 					<div>
-						<h4 class="title">This is title <img src="../assets/imgs/link.png" alt="link"></h4>
+						<h4 class="title">This is title <img src="../assets/imgs/link.png" class="link" alt="link"/></h4>
 						<p class="txt">可用于快速搭建大型单页应用。该工具提供开箱即用的构建工具配置，带来现代化的前端开发流程。只需几分钟即可创建并启动一个带热重载、保存时静态检查以及可用于生产环境的构建配置的项目</p>
 						<span class="time">2017.10.31 12:20</span>
 					</div>
 				</li>
 				<li>
 					<div>
-						<h4 class="title">This is title <img src="../assets/imgs/link.png" alt="link"></h4>
+						<h4 class="title">This is title <img src="../assets/imgs/link.png" class="link" alt="link"/></h4>
 						<p class="txt">可用于快速搭建大型单页应用。该工具提供开箱即用的构建工具配置，带来现代化的前端开发流程。只需几分钟即可创建并启动一个带热重载、保存时静态检查以及可用于生产环境的构建配置的项目</p>
 						<span class="time">2017.10.31 12:20</span>
 					</div>
 				</li>
 				<li>
 					<div>
-						<h4 class="title">This is title <img src="../assets/imgs/link.png" alt="link"></h4>
+						<h4 class="title">This is title <img src="../assets/imgs/link.png" class="link" alt="link"/></h4>
 						<p class="txt">可用于快速搭建大型单页应用。该工具提供开箱即用的构建工具配置，带来现代化的前端开发流程。只需几分钟即可创建并启动一个带热重载、保存时静态检查以及可用于生产环境的构建配置的项目</p>
 						<span class="time">2017.10.31 12:20</span>
 					</div>
 				</li>
 				<li>
 					<div>
-						<h4 class="title">This is title <img src="../assets/imgs/link.png" alt="link"></h4>
+						<h4 class="title">This is title <img src="../assets/imgs/link.png" class="link" alt="link"/></h4>
 						<p class="txt">可用于快速搭建大型单页应用。该工具提供开箱即用的构建工具配置，带来现代化的前端开发流程。只需几分钟即可创建并启动一个带热重载、保存时静态检查以及可用于生产环境的构建配置的项目</p>
 						<span class="time">2017.10.31 12:20</span>
 					</div>
 				</li>
 				<li>
 					<div>
-						<h4 class="title">This is title <img src="../assets/imgs/link.png" alt="link"></h4>
+						<h4 class="title">This is title <img src="../assets/imgs/link.png" class="link" alt="link"/></h4>
 						<p class="txt">可用于快速搭建大型单页应用。该工具提供开箱即用的构建工具配置，带来现代化的前端开发流程。只需几分钟即可创建并启动一个带热重载、保存时静态检查以及可用于生产环境的构建配置的项目</p>
 						<span class="time">2017.10.31 12:20</span>
 					</div>
@@ -96,7 +96,6 @@ export default {
 				line-height: 50px;
 				margin: 20px 0;padding: 0 15px;
 				border-top-right-radius: 30px;border-bottom-right-radius: 30px;
-				// font-weight: bold;
 				img {
 					margin-top: -5px;
 					margin-left: 15px;
@@ -126,6 +125,9 @@ export default {
 				}
 				.time {
 					font-size: 12px;color: #c7c7c7;
+				}
+				img.link {
+					width: 24px;
 				}
 			}
 			ul.hot {
