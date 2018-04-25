@@ -37,11 +37,16 @@ export default {
 
                 })
         },
-        toast(txt, type='success') {
-            this.$notify({
-                title: type,
+        toast(txt) {
+            // this.$notify({
+            //     // title: type,
+            //     message: txt,
+            //     duration: 2000
+            //     // type: type
+            // });
+            this.$message({
                 message: txt,
-                type: type
+                type: 'warning'
             });
         }
     }

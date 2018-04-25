@@ -147,11 +147,14 @@ export default {
         toggleVcode() {
             this.version = Date().valueOf();
         },
-        toast(txt, type='success') {
-            this.$notify({
-                title: type,
+        toast(txt) {
+            // this.$notify({
+            //     message: txt,
+            //     duration: 2000
+            // });
+            this.$message({
                 message: txt,
-                type: type
+                type: 'warning'
             });
         }
     }
