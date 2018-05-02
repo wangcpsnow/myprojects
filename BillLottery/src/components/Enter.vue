@@ -98,7 +98,7 @@ export default {
                     no: '请输入验证码'
                 }
             },
-            vcodeUrl: 'http://39.105.10.24/ild/verify/code.jpg?v=',
+            vcodeUrl: '/ild/verify/code.jpg?v=',
             version: ''
         }
     },
@@ -120,9 +120,13 @@ export default {
                     var data = res.data;
                     if (!data.ret) {
                         this.toast(data.errMsg, 'warning');
+                        if (data.code === 1) {
+                            this.toggleVcode();
+                        }
                         return;
                     }
-
+                    this.toast('发票录入成功', 'success');
+                    this.resetData();
                 });
         },
         check_data() {
@@ -144,17 +148,25 @@ export default {
             }
             return obj;
         },
+        resetData() {
+            for (var key in this.enterForm) {
+                if (this.enterForm.hasOwnProperty(key)) {
+                    this.enterForm[key] = '';
+                }
+            }
+            this.toggleVcode();
+        },
         toggleVcode() {
             this.version = Date().valueOf();
         },
-        toast(txt) {
+        toast(txt, type) {
             // this.$notify({
             //     message: txt,
             //     duration: 2000
             // });
             this.$message({
                 message: txt,
-                type: 'warning'
+                type: type
             });
         }
     }

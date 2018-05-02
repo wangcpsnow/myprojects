@@ -34,10 +34,10 @@ export default {
                         self.toast(data.errMsg, 'warning');
                         return;
                     }
-
+                    self.toast(data.data, 'success');
                 })
         },
-        toast(txt) {
+        toast(txt, type) {
             // this.$notify({
             //     // title: type,
             //     message: txt,
@@ -46,7 +46,7 @@ export default {
             // });
             this.$message({
                 message: txt,
-                type: 'warning'
+                type: type
             });
         }
     }
