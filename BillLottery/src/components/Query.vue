@@ -27,7 +27,7 @@ export default {
                 self.toast('请输入手机号码', 'warning');
                 return;
             }
-            self.$http.get(`/ild/invoice/get?mobile=${self.mobile}`)
+            self.$http.get(`/ild/invoice/queryWin?mobile=${self.mobile}`)
                 .then(res => {
                     var data = res.data;
                     if (!data.ret) {
