@@ -1,20 +1,16 @@
 <template>
     <div id="app">
         <div class="space"></div>
-        <Enter></Enter>
-        <div class="space"></div>
         <Query></Query>
     </div>
 </template>
 
 <script>
-import Enter from './components/Enter.vue'
-import Query from './components/Query.vue'
+import Query from '@/components/Query.vue'
 
 export default {
     name: 'App',
     components: {
-        Enter,
         Query
     }
 }
