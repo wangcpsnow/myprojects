@@ -63,13 +63,3 @@ hr {
 .center {
     text-align: center;
 }
-
-
-.el-button--primary {
-    color: #fff;
-    background-color: #00ADEF;
-    border-color: #00ADEF;
-}
-.el-dialog--center .el-dialog__header {
-     padding-top: 0 !important;
-}

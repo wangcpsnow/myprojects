@@ -8,6 +8,7 @@ import axios from 'axios'
 
 import './assets/reset.css'
 import 'element-ui/lib/theme-chalk/index.css'
+import './assets/elementUi.css'
 
 Vue.config.productionTip = false;
 

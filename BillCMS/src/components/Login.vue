@@ -36,9 +36,20 @@
                     this.$toast('请输入账号密码');
                     return;
                 }
-                this.$http.post('/ild/admin/manage/login', this.loginForm)
+                var self = this;
+                var params = Object.assign({}, this.loginForm);
+                this.$http.get('/ild/admin/manage/login', {
+                        params: params
+                    })
                     .then(res => {
-
+                        var data = res.data;
+                        if (data.data && data.ret) {
+                            self.$toast('登录成功');
+                            self.$router.push('/');
+                        }
+                        else {
+                            self.$toast('用户名或密码错误,请重新登录', '', 'warning');
+                        }
                     });
             }
         }
