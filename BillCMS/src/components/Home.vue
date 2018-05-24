@@ -7,19 +7,14 @@
                     <el-option :label="years" :value="years"></el-option>
                 </el-select>
                 <el-select v-model="form.period" placeholder="请选择期次">
-                    <el-option :value="item" :label='item | showPerLabel' v-for='item in periods'></el-option>
+                    <el-option :value="item" :label='item | showPerLabel' v-for='(item,key) in periods' :key='key'></el-option>
                 </el-select>
             </el-form-item>
             <el-form-item label="时间">
-                <el-col :span="11">
-                    <el-date-picker type="date" placeholder="发票开始日期" @change='changeDate'
-                        value-format='yyyy-MM-dd' v-model="form.startDate" style="width: 100%;"></el-date-picker>
-                </el-col>
-                <el-col class="line center" :span="2">-</el-col>
-                <el-col :span="11">
-                    <el-date-picker type="date" placeholder="发票截止时间" @change='changeDate'
-                        value-format='yyyy-MM-dd' v-model="form.endDate" style="width: 100%;"></el-date-picker>
-                </el-col>
+                <el-date-picker type="date" placeholder="发票开始日期" @change='changeDate'
+                    value-format='yyyy-MM-dd' v-model="form.startDate"></el-date-picker>
+                <el-date-picker type="date" placeholder="发票截止时间" @change='changeDate'
+                    value-format='yyyy-MM-dd' v-model="form.endDate"></el-date-picker>
             </el-form-item>
             <el-form-item label="场内奖人数">
                 <el-input v-model="form.count" @change='changeNum("count")'></el-input>
@@ -147,7 +142,7 @@
         .title {
             margin-bottom: 20px;
         }
-        .el-input, .el-select {
+        .el-input, .el-select, .el-date-picker {
             width: 300px;
         }
     }
