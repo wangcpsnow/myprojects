@@ -10,6 +10,16 @@
         <el-row>
             <el-button plain style='width: 100%;' @click='click_query'>查询</el-button>
         </el-row>
+        <el-row v-if='winData' class='winInfo'>
+            <h3 class="title">{{winData.year}}年第{{winData.period}}期中奖结果:</h3>
+            <ul v-for='(item,index) in winData.invoiceWinQueryVos'>
+                <li>发票代码：{{item.invoiceCode}}</li>
+                <li>发票号码：{{item.invoiceNo}}</li>
+                <li>发奖日期：{{item.invoiceDate}}</li>
+                <li :class="{border: index != winData.invoiceWinQueryVos.length - 1}">获奖类别：{{item.winLevel}}</li>
+            </ul>
+            <p class="center">*领奖方式见公告信息领奖规则*</p>
+        </el-row>
     </div>
 </template>
 
@@ -17,12 +27,14 @@
 export default {
     data() {
         return {
-            mobile: ''
+            mobile: '',
+            winData: ''
         }
     },
     methods: {
         click_query() {
             var self = this;
+            self.winData = '';
             if (!self.mobile) {
                 self.toast('请输入手机号码', 'warning');
                 return;
@@ -34,7 +46,12 @@ export default {
                         self.toast(data.errMsg, 'warning');
                         return;
                     }
-                    self.toast(data.data, 'success');
+                    if (data.data && data.data.year && data.data.period) {
+                        self.winData = data.data;
+                    }
+                    else {
+                        self.toast('非常抱歉,您未中奖', 'success');
+                    }
                 })
         },
         toast(txt, type) {
@@ -55,6 +72,23 @@ export default {
         .el-input {
             width: 100%;
             margin: 0;
+        }
+        .winInfo {
+            .title {
+                margin: 10px 0;
+                font-weight: bold;
+            }
+            li {
+                margin-left: 20px;
+            }
+            li.border {
+                padding-bottom: 10px;
+                margin-bottom: 10px;
+                border-bottom: 1px dashed #2c3e50;
+            }
+            p {
+                margin-top: 20px;
+            }
         }
     }
 </style>
