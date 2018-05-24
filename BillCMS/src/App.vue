@@ -6,7 +6,16 @@
 
 <script>
 export default {
-  name: 'App'
+    name: 'App',
+    beforeCreate() {
+        this.$http.get('/ild/admin/manage/islogin')
+            .then(res => {
+                var data = res.data;
+                if (!data.ret || !data.data) {
+                    this.$router.push('/login');
+                }
+            });
+    }
 }
 </script>
 
