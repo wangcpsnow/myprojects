@@ -86,7 +86,7 @@ export default {
                 },
                 invoiceAmount: {
                     no: '请输入开票金额',
-                    reg: /^[0-9]+[\.]?[0-9]?$/i,
+                    reg: /^[0-9]+[\.]?[0-9]*$/i,
                     msg: '开票金额输入有误'
                 },
                 mobile: {
