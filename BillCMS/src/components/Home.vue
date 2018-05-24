@@ -87,7 +87,7 @@
                     		self.$toast(data.errMsg, '', 'warning');
                     		return;
                     	}
-                    	self.$toast('抽奖成功');
+                    	self.$toast('奖项已经生成，您可以导出奖项');
                     });
             },
 
@@ -147,7 +147,7 @@
         .title {
             margin-bottom: 20px;
         }
-        .el-input {
+        .el-input, .el-select {
             width: 300px;
         }
     }

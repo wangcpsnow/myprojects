@@ -38,12 +38,6 @@ export default {
                 })
         },
         toast(txt, type) {
-            // this.$notify({
-            //     // title: type,
-            //     message: txt,
-            //     duration: 2000
-            //     // type: type
-            // });
             this.$message({
                 message: txt,
                 type: type
