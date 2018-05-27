@@ -1,71 +1,75 @@
 <template>
     <div class="enter">
-        <div class="navtitle">
+        <Nav activeType='enter'></Nav>
+        <!-- <div class="navtitle">
             <h3><s></s>发票录入</h3>
+        </div> -->
+        <div class="wrap">
+            <el-row>
+                <el-col :span="6" class='label'>
+                    <span>发票代码</span>
+                </el-col>
+                <el-col :span="18">
+                    <el-input v-model="enterForm.invoiceCode" size='medium'
+                        placeholder="请输入10/12位发票代码"></el-input>
+                </el-col>
+            </el-row>
+            <el-row>
+                <el-col :span="6" class='label'>
+                    <span>发票号码</span>
+                </el-col>
+                <el-col :span="18">
+                    <el-input v-model="enterForm.invoiceNo" size='medium'
+                        placeholder="请输入8位发票号码"></el-input>
+                </el-col>
+            </el-row>
+            <el-row>
+                <el-col :span="6" class='label'>
+                    <span>开票日期</span>
+                </el-col>
+                <el-col :span="18">
+                    <el-date-picker v-model="enterForm.invoiceDate"
+                        type="date" placeholder="请选择开票日期"></el-date-picker>
+                </el-col>
+            </el-row>
+            <el-row>
+                <el-col :span="6" class='label'>
+                    <span>开票金额</span>
+                </el-col>
+                <el-col :span="18">
+                    <el-input v-model="enterForm.invoiceAmount" size='medium'
+                        placeholder="请输入开票金额"></el-input>
+                </el-col>
+            </el-row>
+            <el-row>
+                <el-col :span="6" class='label'>
+                    <span>手机号码</span>
+                </el-col>
+                <el-col :span="18">
+                    <el-input v-model="enterForm.mobile" size='medium'
+                        placeholder="请输入11位手机号码"></el-input>
+                </el-col>
+            </el-row>
+            <el-row class='vcode'>
+                <el-col :span="6" class='label'>
+                    <span>验证码</span>
+                </el-col>
+                <el-col :span="12">
+                    <el-input v-model="enterForm.vcode" size='medium'></el-input>
+                </el-col>
+                <el-col :span="6" style='float: right'>
+                    <img :src='vcode' alt="" @click='toggleVcode'>
+                </el-col>
+            </el-row>
+            <el-row>
+                <el-button plain style='width: 100%;' @click='click_submit'>提交</el-button>
+            </el-row>
         </div>
-        <el-row>
-            <el-col :span="6" class='label'>
-                <span>发票代码</span>
-            </el-col>
-            <el-col :span="18">
-                <el-input v-model="enterForm.invoiceCode" size='medium'
-                    placeholder="请输入10/12位发票代码"></el-input>
-            </el-col>
-        </el-row>
-        <el-row>
-            <el-col :span="6" class='label'>
-                <span>发票号码</span>
-            </el-col>
-            <el-col :span="18">
-                <el-input v-model="enterForm.invoiceNo" size='medium'
-                    placeholder="请输入8位发票号码"></el-input>
-            </el-col>
-        </el-row>
-        <el-row>
-            <el-col :span="6" class='label'>
-                <span>开票日期</span>
-            </el-col>
-            <el-col :span="18">
-                <el-date-picker v-model="enterForm.invoiceDate"
-                    type="date" placeholder="请选择开票日期"></el-date-picker>
-            </el-col>
-        </el-row>
-        <el-row>
-            <el-col :span="6" class='label'>
-                <span>开票金额</span>
-            </el-col>
-            <el-col :span="18">
-                <el-input v-model="enterForm.invoiceAmount" size='medium'
-                    placeholder="请输入开票金额"></el-input>
-            </el-col>
-        </el-row>
-        <el-row>
-            <el-col :span="6" class='label'>
-                <span>手机号码</span>
-            </el-col>
-            <el-col :span="18">
-                <el-input v-model="enterForm.mobile" size='medium'
-                    placeholder="请输入11位手机号码"></el-input>
-            </el-col>
-        </el-row>
-        <el-row class='vcode'>
-            <el-col :span="6" class='label'>
-                <span>验证码</span>
-            </el-col>
-            <el-col :span="12">
-                <el-input v-model="enterForm.vcode" size='medium'></el-input>
-            </el-col>
-            <el-col :span="6" style='float: right'>
-                <img :src='vcode' alt="" @click='toggleVcode'>
-            </el-col>
-        </el-row>
-        <el-row>
-            <el-button plain style='width: 100%;' @click='click_submit'>提交</el-button>
-        </el-row>
     </div>
 </template>
 
 <script>
+import Nav from './Nav'
 export default {
     data() {
         return {
@@ -101,6 +105,9 @@ export default {
             vcodeUrl: '/ild/verify/code.jpg?v=',
             version: ''
         }
+    },
+    components: {
+        Nav
     },
     computed: {
         vcode() {
@@ -174,6 +181,11 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+    .wrap {
+        border: 1px solid silver;
+        margin: 5px;
+        padding-bottom: 50px;
+    }
     .enter {
         .el-row {
             margin: 5px 20px;

@@ -1,35 +1,42 @@
 <template>
     <div class="query">
-        <div class="navtitle">
+        <Nav activeType='query'></Nav>
+        <!-- <div class="navtitle">
             <h3><s></s>发票查询</h3>
+        </div> -->
+        <div class="wrap">
+            <el-row>
+                <el-input v-model="mobile" size='medium'
+                        placeholder="请输入11位手机号码"></el-input>
+            </el-row>
+            <el-row>
+                <el-button plain style='width: 100%;' @click='click_query'>查询</el-button>
+            </el-row>
+            <el-row v-if='winData' class='winInfo'>
+                <h3 class="title">{{winData.year}}年第{{winData.period}}期中奖结果:</h3>
+                <ul v-for='(item,index) in winData.invoiceWinQueryVos'>
+                    <li>发票代码：{{item.invoiceCode}}</li>
+                    <li>发票号码：{{item.invoiceNo}}</li>
+                    <li>发奖日期：{{item.invoiceDate}}</li>
+                    <li :class="{border: index != winData.invoiceWinQueryVos.length - 1}">获奖类别：{{item.winLevel}}</li>
+                </ul>
+                <p class="center">*领奖方式见公告信息领奖规则*</p>
+            </el-row>
         </div>
-        <el-row>
-            <el-input v-model="mobile" size='medium'
-                    placeholder="请输入11位手机号码"></el-input>
-        </el-row>
-        <el-row>
-            <el-button plain style='width: 100%;' @click='click_query'>查询</el-button>
-        </el-row>
-        <el-row v-if='winData' class='winInfo'>
-            <h3 class="title">{{winData.year}}年第{{winData.period}}期中奖结果:</h3>
-            <ul v-for='(item,index) in winData.invoiceWinQueryVos'>
-                <li>发票代码：{{item.invoiceCode}}</li>
-                <li>发票号码：{{item.invoiceNo}}</li>
-                <li>发奖日期：{{item.invoiceDate}}</li>
-                <li :class="{border: index != winData.invoiceWinQueryVos.length - 1}">获奖类别：{{item.winLevel}}</li>
-            </ul>
-            <p class="center">*领奖方式见公告信息领奖规则*</p>
-        </el-row>
     </div>
 </template>
 
 <script>
+import Nav from './Nav'
 export default {
     data() {
         return {
             mobile: '',
             winData: ''
         }
+    },
+    components: {
+        Nav
     },
     methods: {
         click_query() {
@@ -66,6 +73,12 @@ export default {
 
 <style lang="stylus" scoped>
     .query {
+        .wrap {
+            border: 1px solid silver;
+            margin: 5px;
+            padding-top: 10px;
+            padding-bottom: 50px;
+        }
         .el-row {
             margin: 5px 20px;
         }

@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <div class="space"></div>
+        <!-- <div class="space"></div> -->
         <Query></Query>
     </div>
 </template>
