@@ -2,7 +2,7 @@
     <div class="nav">
         <table>
             <tr>
-                <td :class='{active: activeType=="enter"}'><a href="/enter.html">发票录入</a></td>
+                <td :class='{active: activeType=="enter"}'><a href="/entry.html">发票录入</a></td>
                 <td :class='{active: activeType=="query"}'><a href="/query.html">中奖查询</a></td>
                 <td><a href="javascript:void(0)">直播与回顾</a></td>
                 <td><a href="javascript:void(0)">公告信息</a></td>
