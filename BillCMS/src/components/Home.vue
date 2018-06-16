@@ -1,6 +1,5 @@
 <template>
     <div class="home">
-        <h2 class="center title">发票星摇奖系统</h2>
         <el-form ref="form" :model="form" label-width="120px">
             <el-form-item label="期次">
                 <el-select v-model="form.year" placeholder="请选择年份">
@@ -17,10 +16,10 @@
                     value-format='yyyy-MM-dd' v-model="form.endDate"></el-date-picker>
             </el-form-item>
             <el-form-item label="场内奖人数">
-                <el-input v-model="form.count" @change='changeNum("count")'></el-input>
+                <el-input v-model="form.highCount" @change='changeNum("highCount")'></el-input>
             </el-form-item>
             <el-form-item label="场外奖人数">
-                <el-input v-model="form.highCount" @change='changeNum("highCount")'></el-input>
+                <el-input v-model="form.count" @change='changeNum("count")'></el-input>
             </el-form-item>
             <el-form-item>
                 <el-button type="primary" @click='click_win'>抽奖</el-button>
@@ -51,8 +50,9 @@
         created() {
             this.$http.get('/ild/admin/manage/condition')
                 .then(res => {
-                    this.years = res.data.data.year;
-                    this.periods = res.data.data.peroidList;
+                    var data = res.data.data;
+                    this.years = data.conditionList[0].year;
+                    this.periods = data.conditionList[0].peroidList;
                 });
         },
         filters: {
@@ -135,13 +135,7 @@
 
 <style lang="stylus" scoped>
     .home {
-        width: 60%;
-        margin: 0 20%;
-        margin-top: 30px;
         text-align: left;
-        .title {
-            margin-bottom: 20px;
-        }
         .el-input, .el-select, .el-date-picker {
             width: 300px;
         }

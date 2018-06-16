@@ -12,7 +12,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
         '/ild': {
-            target: 'http://39.105.10.24',
+            target: 'http://admin.fapiaoxing.com',
             changeOrigin: true
         }
     },

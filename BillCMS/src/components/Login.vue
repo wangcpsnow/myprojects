@@ -1,6 +1,5 @@
 <template>
-    <div class="login">
-        <h3 class="center title">发票星后台摇奖登录系统</h3>
+    <div class="login" style="padding: 20px;">
         <el-form ref="form" :model="loginForm" label-width="80px">
             <el-form-item label="账号">
                 <el-input v-model="loginForm.userName"></el-input>
@@ -60,11 +59,8 @@
     .login {
         width: 400px;
         margin: auto;
-        margin-top: 100px;
-        top: 50%
-        .title {
-            margin-bottom: 30px;
-        }
+        // margin-top: 100px;
+        // top: 50%;
         .tips {
             margin-top: 100px;
         }
