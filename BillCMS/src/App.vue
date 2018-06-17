@@ -11,7 +11,7 @@
                     <i class="el-icon-document"></i>
                     <span slot="title">发票抽奖</span>
                 </el-menu-item>
-                <el-menu-item index='3'>
+                <el-menu-item index='3' style='display: none;'>
                     <i class="el-icon-setting"></i>
                     <span slot="title">广告管理</span>
                 </el-menu-item>

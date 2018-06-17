@@ -5,9 +5,10 @@
                 <el-select v-model="form.year" placeholder="请选择年份">
                     <el-option :label="years" :value="years"></el-option>
                 </el-select>
-                <el-select v-model="form.period" placeholder="请选择期次">
+                <el-select v-model="form.period" placeholder="请选择期次" @change='changePeriod'>
                     <el-option :value="item" :label='item | showPerLabel' v-for='(item,key) in periods' :key='key'></el-option>
                 </el-select>
+                <span v-if='status'>本期次: {{status}}</span>
             </el-form-item>
             <el-form-item label="时间">
                 <el-date-picker type="date" placeholder="发票开始日期" @change='changeDate'
@@ -22,9 +23,9 @@
                 <el-input v-model="form.count" @change='changeNum("count")'></el-input>
             </el-form-item>
             <el-form-item>
-                <el-button type="primary" @click='click_win'>抽奖</el-button>
+                <el-button type="primary" @click='click_win' :disabled='winDisabled'>抽奖</el-button>
                 <el-button type="success" @click='click_export'>导出获奖信息</el-button>
-                <el-button type="danger" @click='click_lock'>锁定本期</el-button>
+                <el-button type="danger" @click='click_lock' :disabled='lockDisabled'>锁定本期</el-button>
             </el-form-item>
         </el-form>
     </div>
@@ -44,7 +45,15 @@
                     endDate: '请选择结束日期',
                     count: '请输入场内奖人数',
                     highCount: '请输入场外奖人数'
-                }
+                },
+                winStatus: {
+                    '0': '未抽奖',
+                    '1': '已抽奖未发布',
+                    '2': '已发布'
+                },
+                status: '',
+                winDisabled: false,
+                lockDisabled: false
             }
         },
         created() {
@@ -61,6 +70,19 @@
         	}
         },
         methods: {
+            // 改变批次
+            changePeriod() {
+                var params = {
+                    year: this.form.year,
+                    period: this.form.period
+                }
+                this.$http.get('/ild/admin/manage/period/status', {
+                        params: params
+                    })
+                    .then(res => {
+                        this.status = this.winStatus[res.data.data];
+                    });
+            },
             // 抽奖
             click_win() {
                 var self = this;
@@ -72,6 +94,7 @@
                         }
                     }
                 }
+                self.winDisabled = true;
                 var params = Object.assign({}, self.form);
                 self.$http.get(`/ild/admin/manage/choiceWin`, {
                         params: params
@@ -83,6 +106,7 @@
                     		return;
                     	}
                     	self.$toast('奖项已经生成，您可以导出奖项');
+                        self.winDisabled = true;
                     });
             },
 
@@ -99,9 +123,11 @@
             // 锁定本期
             click_lock() {
             	var self = this;
+                self.lockDisabled = true;
                 this.$http.get('/ild/admin/manage/lockWin')
                     .then(res => {
                     	var data = res.data;
+                        self.lockDisabled = false;
                     	if (!data.ret) {
                     		self.$toast(data.errMsg, '', 'warning');
                     		return;
