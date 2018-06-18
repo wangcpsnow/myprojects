@@ -11,7 +11,7 @@
                     <i class="el-icon-document"></i>
                     <span slot="title">发票抽奖</span>
                 </el-menu-item>
-                <el-menu-item index='3' style='display: none;'>
+                <el-menu-item index='3'>
                     <i class="el-icon-setting"></i>
                     <span slot="title">广告管理</span>
                 </el-menu-item>
@@ -55,6 +55,8 @@ export default {
             case '#/ads':
                 this.active = '3';
                 break;
+            default:
+                this.active = '1';
         }
     },
     watch: {

@@ -3,7 +3,7 @@
         <el-carousel>
             <el-carousel-item v-for="item in imgs" :key="item.id">
                 <img :src="item.imagePath" alt="">
-                <a href="">删除</a>
+                <a href="javascript:void(0);" class='dele' @click='clickDele(item.id)'>删除</a>
             </el-carousel-item>
         </el-carousel>
         <el-form label-width="100px">
@@ -21,8 +21,6 @@
 </template>
 
 <script>
-// import $ from "jquery";
-
 export default {
     data() {
         return {
@@ -52,21 +50,28 @@ export default {
                 this.$toast('', '请选择图片跳转链接', 'warning');
                 return;
             }
-            // var param = new FormData();
-            // var oFile = document.getElementsByClassName('uploadFile')[0].getElementsByTagName('input');
-            // param.append('image', oFile, 'image');
-            // param.append('imageUrl', this.uploadForm.imageUrl);
-            // this.$http.post('/ild/admin/manage/uploadImage', param, {
-            //         headers: {'Content-Type': 'multipart/form-data'}
-            //     })
-            //     .then(res => {});
-
-            // $.ajax({
-            //     url: '/ild/admin/manage/uploadImage',
-            //     type: 'POST',
-            //     data: $(".ads form").serialize(),
-            //     success: function () {}
-            // });
+            var param = new FormData();
+            var oFile = document.getElementsByClassName('uploadFile')[0].getElementsByTagName('input')[0];
+            param.append('image', oFile.files[0]);
+            param.append('imageUrl', this.uploadForm.imageUrl);
+            this.$http.post('/ild/admin/manage/uploadImage', param)
+                .then(res => {
+                    if (res.data && res.data.data) {
+                        this.getData();
+                        this.uploadForm.image = '';
+                        this.uploadForm.imageUrl = '';
+                        this.$toast('', '上传成功');
+                    }
+                });
+        },
+        clickDele(id) {
+            this.$http.get('/ild/admin/manage/deleteImage?id=' + id)
+                .then(res => {
+                    if (res.data.ret && res.data.data) {
+                        this.$toast('', '删除成功');
+                        this.getData();
+                    }
+                });
         }
     }
 }
@@ -83,6 +88,15 @@ export default {
         .el-form {
             margin-top: 20px;
             width: 500px;
+        }
+        .el-carousel__item {
+            .dele {
+                position: relative;
+                color: red;
+                font-weight: bold;
+                left: 100px;
+                bottom: 50px;
+            }
         }
     }
 </style>
