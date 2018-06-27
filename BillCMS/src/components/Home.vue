@@ -8,7 +8,11 @@
                 <el-select v-model="form.period" placeholder="请选择期次" @change='changePeriod'>
                     <el-option :value="item" :label='item | showPerLabel' v-for='(item,key) in periods' :key='key'></el-option>
                 </el-select>
-                <span v-if='status'>本期次: {{status}}</span>
+                <!-- <span v-if='status'>本期次: {{status}}</span> -->
+                <el-radio-group v-model="status" v-if='status' size='medium'>
+                    <el-radio-button v-for='(val,key) in winStatus' :key='key'
+                        :label='val' :disabled='val != status'></el-radio-button>
+                </el-radio-group>
             </el-form-item>
             <el-form-item label="时间">
                 <el-date-picker type="date" placeholder="发票开始日期" @change='changeDate'
