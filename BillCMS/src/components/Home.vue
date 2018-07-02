@@ -14,7 +14,7 @@
                         :label='val' :disabled='val != status'></el-radio-button>
                 </el-radio-group>
             </el-form-item>
-            <el-form-item label="时间">
+            <el-form-item label="开票时间">
                 <el-date-picker type="date" placeholder="发票开始日期" @change='changeDate'
                     value-format='yyyy-MM-dd' v-model="form.startDate"></el-date-picker>
                 <el-date-picker type="date" placeholder="发票截止时间" @change='changeDate'
