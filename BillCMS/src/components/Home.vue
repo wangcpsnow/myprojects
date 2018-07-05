@@ -47,8 +47,8 @@
                     period: '请选择期次',
                     startDate: '请选择开始日期',
                     endDate: '请选择结束日期',
-                    count: '请输入场内奖人数',
-                    highCount: '请输入场外奖人数'
+                    highCount: '请输入场内奖人数',
+                    count: '请输入场外奖人数'
                 },
                 winStatus: {
                     '0': '未抽奖',
@@ -92,7 +92,7 @@
                 var self = this;
                 for (var key in self.checks) {
                     if (self.checks.hasOwnProperty(key)) {
-                        if (!self.form[key]) {
+                        if (!self.form[key] && self.form[key] + '' !== '0') {
                             self.$toast(self.checks[key], '', 'warning');
                             return;
                         }
