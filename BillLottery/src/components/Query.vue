@@ -46,6 +46,8 @@ export default {
                 self.toast('请输入手机号码', 'warning');
                 return;
             }
+            self.toast('查询暂未开通', 'success');
+            return;
             self.$http.get(`/ild/invoice/queryWin?mobile=${self.mobile}`)
                 .then(res => {
                     var data = res.data;
