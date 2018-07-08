@@ -11,6 +11,7 @@
             </el-row>
             <el-row>
                 <el-button plain style='width: 100%;' @click='click_query'>查询</el-button>
+                <p class="tips">查询结果仅为参考,具体结果请以官方公告页面为准.</p>
             </el-row>
             <el-row v-if='winData' class='winInfo'>
                 <h3 class="title">{{winData.year}}年第{{winData.period}}期中奖结果:</h3>
@@ -78,6 +79,11 @@ export default {
             margin: 5px;
             padding-top: 10px;
             padding-bottom: 50px;
+            .tips {
+                color: #a1a1a2;
+                font-size: 14px;
+                margin-top: 10px;
+            }
         }
         .el-row {
             margin: 5px 20px;
