@@ -7,7 +7,7 @@
         <div class="wrap">
             <el-row>
                 <el-input v-model="mobile" size='medium'
-                        placeholder="请输入11位手机号码"></el-input>
+                        placeholder="请输入本人11位手机号码"></el-input>
             </el-row>
             <el-row>
                 <el-button plain style='width: 100%;' @click='click_query'>查询</el-button>

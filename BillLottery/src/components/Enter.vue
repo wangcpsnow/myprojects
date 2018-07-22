@@ -47,7 +47,7 @@
                 </el-col>
                 <el-col :span="18">
                     <el-input v-model="enterForm.mobile" size='medium'
-                        placeholder="请输入11位手机号码"></el-input>
+                        placeholder="请输入本人11位手机号码"></el-input>
                 </el-col>
             </el-row>
             <el-row class='vcode'>
