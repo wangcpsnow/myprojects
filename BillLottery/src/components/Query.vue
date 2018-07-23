@@ -5,6 +5,13 @@
             <h3><s></s>发票查询</h3>
         </div> -->
         <div class="wrap">
+            <el-row v-if='imgs.length'>
+                <el-carousel :height="imgHeight">
+                    <el-carousel-item v-for="item in imgs" :key="item.id">
+                        <img ref="imgHeight" :src="item.imagePath" alt="">
+                    </el-carousel-item>
+                </el-carousel>
+            </el-row>
             <el-row>
                 <el-input v-model="mobile" size='medium'
                         placeholder="请输入本人11位手机号码"></el-input>
@@ -33,13 +40,39 @@ export default {
     data() {
         return {
             mobile: '',
-            winData: ''
+            winData: '',
+            imgs: [],
+            imgHeight: '200px'
         }
     },
     components: {
         Nav
     },
+    created() {
+        this.getAds();
+    },
     methods: {
+        getAds() {
+            var self = this;
+            self.$http.get('/ild/admin/manage/queryImage')
+                .then(res => {
+                    var imgs = res.data.data
+                    if (imgs && imgs.length) {
+                        this.lazyLoad(imgs[0]['imagePath'])
+                    }
+                    this.imgs = imgs;
+                });
+        },
+        lazyLoad(url) {
+            var self = this;
+            var img = new Image();
+            img.onload = function (data) {
+                setTimeout(function () {
+                    self.imgHeight = self.$refs.imgHeight[0]['height'] + 'px';
+                }, 100);
+            };
+            img.src = url;
+        },
         click_query() {
             var self = this;
             self.winData = '';
@@ -83,6 +116,11 @@ export default {
                 color: #a1a1a2;
                 font-size: 14px;
                 margin-top: 10px;
+            }
+            .el-carousel {
+                img {
+                    width: 100%;
+                }
             }
         }
         .el-row {
