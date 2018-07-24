@@ -5,12 +5,10 @@
             <h3><s></s>发票查询</h3>
         </div> -->
         <div class="wrap">
-            <el-row v-if='imgs.length'>
-                <el-carousel :height="imgHeight">
-                    <el-carousel-item v-for="item in imgs" :key="item.id">
-                        <img ref="imgHeight" :src="item.imagePath" alt="">
-                    </el-carousel-item>
-                </el-carousel>
+            <el-row v-if='adImg'>
+                <a :href="adImg.imageUrl">
+                    <img :src="adImg.imagePath" alt="">
+                </a>
             </el-row>
             <el-row>
                 <el-input v-model="mobile" size='medium'
@@ -41,8 +39,7 @@ export default {
         return {
             mobile: '',
             winData: '',
-            imgs: [],
-            imgHeight: '200px'
+            adImg: ''
         }
     },
     components: {
@@ -56,22 +53,16 @@ export default {
             var self = this;
             self.$http.get('/ild/invoice/imageList')
                 .then(res => {
-                    var imgs = res.data.data
-                    if (imgs && imgs.length) {
-                        this.lazyLoad(imgs[0]['imagePath'])
+                    var data = res.data.data;
+                    if (data && data.length) {
+                        if (data.length > 1) {
+                            self.adImg = data[1];
+                        }
+                        else {
+                            self.adImg = data[0];
+                        }
                     }
-                    this.imgs = imgs;
                 });
-        },
-        lazyLoad(url) {
-            var self = this;
-            var img = new Image();
-            img.onload = function (data) {
-                setTimeout(function () {
-                    self.imgHeight = self.$refs.imgHeight[0]['height'] + 'px';
-                }, 100);
-            };
-            img.src = url;
         },
         click_query() {
             var self = this;
@@ -117,10 +108,8 @@ export default {
                 font-size: 14px;
                 margin-top: 10px;
             }
-            .el-carousel {
-                img {
-                    width: 100%;
-                }
+            img {
+                width: 100%;
             }
         }
         .el-row {

@@ -6,6 +6,11 @@
         </div> -->
         <div class="wrap">
             <el-row>
+                <a :href="adImg.imageUrl">
+                    <img :src="adImg.imagePath" alt="">
+                </a>
+            </el-row>
+            <el-row>
                 <el-col :span="6" class='label'>
                     <span>发票代码</span>
                 </el-col>
@@ -103,7 +108,8 @@ export default {
                 }
             },
             vcodeUrl: '/ild/verify/code.jpg?v=',
-            version: ''
+            version: '',
+            adImg: ''
         }
     },
     components: {
@@ -114,7 +120,20 @@ export default {
             return this.vcodeUrl + this.version;
         }
     },
+    created() {
+        this.getAds();
+    },
     methods: {
+        getAds() {
+            var self = this;
+            self.$http.get('/ild/invoice/imageList')
+                .then(res => {
+                    var data = res.data.data;
+                    if (data && data.length) {
+                        self.adImg = data[0];
+                    }
+                });
+        },
         click_submit() {
             var data = this.check_data();
             if (!data) {
@@ -185,6 +204,9 @@ export default {
         border: 1px solid silver;
         margin: 5px;
         padding-bottom: 50px;
+        img {
+            width: 100%;
+        }
     }
     .enter {
         .el-row {

@@ -77,6 +77,19 @@ export default {
             return fmt;
         }
     },
+    watch: {
+        'uploadForm.image'(newVal) {
+            var reg = /jpg$/gi;
+            if (newVal) {
+                if (!reg.test(newVal)) {
+                    this.$toast('', '只能上传jpg图片', 'warning');
+                    document.getElementsByClassName('uploadFile')[0].getElementsByTagName('input')[0].value = '';
+                    this.uploadForm.image = '';
+                    return;
+                }
+            }
+        }
+    },
     methods: {
         getData() {
             this.$http.get('/ild/admin/manage/queryImage')
