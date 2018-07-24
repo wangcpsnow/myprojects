@@ -54,7 +54,7 @@ export default {
     methods: {
         getAds() {
             var self = this;
-            self.$http.get('/ild/admin/manage/queryImage')
+            self.$http.get('/ild/invoice/imageList')
                 .then(res => {
                     var imgs = res.data.data
                     if (imgs && imgs.length) {
