@@ -26,17 +26,26 @@
             </el-table>
         </div>
         <h2 class="title">上传新图片</h2>
-        <el-form label-width="100px">
+        <!-- <el-form label-width="100px">
             <el-form-item label="选择图片">
                 <el-input type='file' size='medium' class='uploadFile' @change='changeUpFile'></el-input>
             </el-form-item>
             <el-form-item label="跳转链接">
-                <el-input size='medium' class='goUrl'></el-input>
+                <el-input type='text' size='medium' class='goUrl'></el-input>
             </el-form-item>
             <el-form-item>
                 <el-button type="primary" @click='clickAddImg' size='medium'>添加图片</el-button>
             </el-form-item>
-        </el-form>
+        </el-form> -->
+        <div class="upload">
+            <label for="">选择图片</label>
+            <el-input type='file' size='medium' class='uploadFile'></el-input>
+            <br>
+            <label for="">跳转链接</label>
+            <el-input type='text' size='medium' class='goUrl'></el-input>
+            <br>
+            <el-button type="primary" @click='clickAddImg' size='medium'>添加图片</el-button>
+        </div>
     </div>
 </template>
 
@@ -47,14 +56,13 @@ export default {
     data() {
         return {
             imgs: []
-            // uploadForm: {
-            //     image: '',
-            //     imageUrl: ''
-            // }
         }
     },
     created() {
         this.getData();
+    },
+    mounted() {
+        this.addEvents();
     },
     filters: {
         parseTime(timestamp, fmt = 'yyyy-MM-dd hh:mm:ss') {
@@ -79,19 +87,6 @@ export default {
             return fmt;
         }
     },
-    watch: {
-        // 'uploadForm.image'(newVal) {
-            // var reg = /jpg$/gi;
-            // if (newVal) {
-            //     if (!reg.test(newVal)) {
-            //         this.$toast('', '只能上传jpg图片', 'warning');
-            //         document.getElementsByClassName('uploadFile')[0].getElementsByTagName('input')[0].value = '';
-            //         this.uploadForm.image = '';
-            //         return;
-            //     }
-            // }
-        // }
-    },
     methods: {
         // 获取之前的图片数据
         getData() {
@@ -109,7 +104,7 @@ export default {
             var reg = /jpg$/gi;
             if (!reg.test($file.val().trim())) {
                 this.$toast('', '只能上传jpg图片', 'warning');
-                $file.val('');
+                this.rmFile();
             }
         },
         // 确认添加
@@ -131,16 +126,23 @@ export default {
                 .then(res => {
                     if (res.data && res.data.data) {
                         this.getData();
-                        // this.uploadForm.image = '';
-                        // this.uploadForm.imageUrl = '';
                         this.$toast('', '上传成功');
+                        this.rmFile();
                         $url.val('');
-                        $file.val('');
                     }
                     else {
                         this.$toast('', res.data.errMsg, 'warning');
                     }
                 });
+        },
+        addEvents() {
+            var $file = $('.uploadFile input[type="file"]');
+            $file.on('change', this.changeUpFile);
+        },
+        rmFile() {
+            var $file = $('.uploadFile input[type="file"]');
+            $file.after($file.clone(true).val(''));
+            $file.remove();
         },
         clickDele(id) {
             this.$http.get('/ild/admin/manage/deleteImage?id=' + id)
@@ -183,6 +185,22 @@ export default {
         }
         .tableWrap {
             padding: 10px;
+        }
+        .upload {
+            margin-top: 20px;
+            label {
+                display: inline-block;
+                width: 100px;
+                text-align: right;
+                margin-right: 20px;
+                margin-bottom: 30px;
+            }
+            .el-input {
+                width: 300px;
+            }
+            .el-button {
+                margin-left: 30px;
+            }
         }
     }
 </style>
