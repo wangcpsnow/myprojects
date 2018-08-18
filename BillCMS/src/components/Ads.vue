@@ -28,10 +28,10 @@
         <h2 class="title">上传新图片</h2>
         <el-form label-width="100px">
             <el-form-item label="选择图片">
-                <el-input type='file' size='medium' v-model='uploadForm.image' class='uploadFile'></el-input>
+                <el-input type='file' size='medium' class='uploadFile' @change='changeUpFile'></el-input>
             </el-form-item>
             <el-form-item label="跳转链接">
-                <el-input size='medium' v-model='uploadForm.imageUrl'></el-input>
+                <el-input size='medium' class='goUrl'></el-input>
             </el-form-item>
             <el-form-item>
                 <el-button type="primary" @click='clickAddImg' size='medium'>添加图片</el-button>
@@ -41,14 +41,16 @@
 </template>
 
 <script>
+import $ from 'jquery';
+
 export default {
     data() {
         return {
-            imgs: [],
-            uploadForm: {
-                image: '',
-                imageUrl: ''
-            }
+            imgs: []
+            // uploadForm: {
+            //     image: '',
+            //     imageUrl: ''
+            // }
         }
     },
     created() {
@@ -78,45 +80,62 @@ export default {
         }
     },
     watch: {
-        'uploadForm.image'(newVal) {
-            var reg = /jpg$/gi;
-            if (newVal) {
-                if (!reg.test(newVal)) {
-                    this.$toast('', '只能上传jpg图片', 'warning');
-                    document.getElementsByClassName('uploadFile')[0].getElementsByTagName('input')[0].value = '';
-                    this.uploadForm.image = '';
-                    return;
-                }
-            }
-        }
+        // 'uploadForm.image'(newVal) {
+            // var reg = /jpg$/gi;
+            // if (newVal) {
+            //     if (!reg.test(newVal)) {
+            //         this.$toast('', '只能上传jpg图片', 'warning');
+            //         document.getElementsByClassName('uploadFile')[0].getElementsByTagName('input')[0].value = '';
+            //         this.uploadForm.image = '';
+            //         return;
+            //     }
+            // }
+        // }
     },
     methods: {
+        // 获取之前的图片数据
         getData() {
             this.$http.get('/ild/admin/manage/queryImage')
                 .then(res => {
                     this.imgs = res.data.data;
                 });
         },
+        // 改变文件检测文件类型
+        changeUpFile() {
+            var $file = $('.uploadFile input[type="file"]');
+            if (!$file.val().trim()) {
+                return;
+            }
+            var reg = /jpg$/gi;
+            if (!reg.test($file.val().trim())) {
+                this.$toast('', '只能上传jpg图片', 'warning');
+                $file.val('');
+            }
+        },
+        // 确认添加
         clickAddImg() {
-            if (!this.uploadForm.image) {
+            var $file = $('.uploadFile input[type="file"]');
+            if (!$file.val().trim()) {
                 this.$toast('', '请选择图片', 'warning');
                 return;
             }
-            if (!this.uploadForm.imageUrl) {
+            var $url = $('.goUrl input[type="text"]');
+            if (!$url.val().trim()) {
                 this.$toast('', '请选择图片跳转链接', 'warning');
                 return;
             }
             var param = new FormData();
-            var oFile = document.getElementsByClassName('uploadFile')[0].getElementsByTagName('input')[0];
-            param.append('image', oFile.files[0]);
-            param.append('imageUrl', this.uploadForm.imageUrl);
+            param.append('image', $file[0].files[0]);
+            param.append('imageUrl', $url.val().trim());
             this.$http.post('/ild/admin/manage/uploadImage', param)
                 .then(res => {
                     if (res.data && res.data.data) {
                         this.getData();
-                        this.uploadForm.image = '';
-                        this.uploadForm.imageUrl = '';
+                        // this.uploadForm.image = '';
+                        // this.uploadForm.imageUrl = '';
                         this.$toast('', '上传成功');
+                        $url.val('');
+                        $file.val('');
                     }
                     else {
                         this.$toast('', res.data.errMsg, 'warning');
