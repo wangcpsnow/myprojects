@@ -11,6 +11,10 @@
                     <i class="el-icon-document"></i>
                     <span slot="title">发票抽奖</span>
                 </el-menu-item>
+                <el-menu-item index='4'>
+                    <i class="el-icon-document"></i>
+                    <span slot="title">导入页面</span>
+                </el-menu-item>
                 <el-menu-item index='3'>
                     <i class="el-icon-setting"></i>
                     <span slot="title">广告管理</span>
@@ -55,6 +59,9 @@ export default {
             case '#/ads':
                 this.active = '3';
                 break;
+            case '#/import':
+                this.active = '4';
+                break;
             default:
                 this.active = '1';
         }
@@ -81,6 +88,9 @@ export default {
                     break;
                 case '3':
                     this.$router.push('/ads');
+                    break;
+                case '4':
+                    this.$router.push('/import');
                     break;
             }
         }

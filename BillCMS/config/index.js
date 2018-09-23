@@ -11,6 +11,18 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
+        '/ild/admin/manage/lockWin': {
+            target: 'http://localhost:8889',
+            changeOrigin: true
+        },
+        '/ild/admin/manage/upLoadInvoice': {
+            target: 'http://localhost:8889',
+            changeOrigin: true
+        },
+        '/ild/admin/manage/exportInvoiceInfoList': {
+            target: 'http://localhost:8889',
+            changeOrigin: true
+        },
         '/ild': {
             target: 'http://admin.fapiaoxing.com',
             changeOrigin: true
