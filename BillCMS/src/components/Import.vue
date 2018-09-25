@@ -111,7 +111,7 @@
                 if (!$file.val().trim()) {
                     return;
                 }
-                var reg = /xlsx$/gi;
+                var reg = /xlsx|xls$/gi;
                 if (!reg.test($file.val().trim())) {
                     this.$toast('', '只能上传Excel文件', 'warning');
                     this.rmFile();
