@@ -23,7 +23,7 @@
             </el-form-item>
             <el-form-item>
                 <div>
-                    <el-table :data="fdata" height="250" border style="width: 90%">
+                    <el-table :data="fdata" height="370" border style="width: 90%">
                         <el-table-column prop="index" label="序号" width="180"></el-table-column>
                         <el-table-column prop="invoiceNo" label="发票号码" width="180"></el-table-column>
                         <el-table-column prop="invoiceCode" label="发票代码"></el-table-column>
@@ -221,6 +221,11 @@
                 opacity: 0;
                 width: 400px;
                 cursor: pointer;
+            }
+        }
+        .el-table {
+            th {
+                line-height: 23px;
             }
         }
         .upBtn {
