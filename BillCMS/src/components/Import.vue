@@ -36,6 +36,15 @@
                 <el-button type="primary" @click='clickPub' size='medium'>发布</el-button>
             </el-form-item>
         </el-form>
+        <el-dialog title="提示" :visible.sync="dlgShow" width="500px">
+            <p>点击发布后，查询端即可查询本地导入的结果</p>
+            <p style="font-size: 20px;color: red;">一经发布，不可撤回</p>
+            <span></span>
+            <span slot="footer" class="dialog-footer">
+                <el-button size='medium' @click="dlgShow = false">取 消</el-button>
+                <el-button size='medium' type="primary" @click="clickDlgOk">确 定</el-button>
+            </span>
+        </el-dialog>
     </div>
 </template>
 
@@ -58,7 +67,8 @@
                 checks: {
                     year: '请选择年份',
                     period: '请选择日期'
-                }
+                },
+                dlgShow: false
             }
         },
         created() {
@@ -145,6 +155,20 @@
                         }
                     });
             },
+            // 确认发布
+            clickDlgOk() {
+                var url = `/ild/admin/manage/lockWin?year=${this.form.year}&period=${this.form.period}`;
+                this.$http.get(url, {})
+                    .then(res => {
+                        if (res.data && res.data.data) {
+                            this.$toast('', '发布成功');
+                        }
+                        else {
+                            this.$toast('', res.data.errMsg, 'warning');
+                        }
+                        this.dlgShow = false;
+                    });
+            },
             // 发布
             clickPub() {
                 var self = this;
@@ -160,16 +184,7 @@
                     self.$toast('', '请选择预览文件', 'warning');
                     return;
                 }
-                var url = `/ild/admin/manage/lockWin?year=${self.form.year}&period=${self.form.period}`;
-                this.$http.get(url, {})
-                    .then(res => {
-                        if (res.data && res.data.data) {
-                            this.$toast('', '发布成功');
-                        }
-                        else {
-                            this.$toast('', res.data.errMsg, 'warning');
-                        }
-                    });
+                this.dlgShow = true;
             }
         }
     }
