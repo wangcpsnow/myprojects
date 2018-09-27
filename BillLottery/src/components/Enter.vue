@@ -30,19 +30,10 @@
             </el-row>
             <el-row>
                 <el-col :span="6" class='label'>
-                    <span>校验码</span>
-                </el-col>
-                <el-col :span="18">
-                    <el-input v-model="enterForm.invoiceNo" size='medium'
-                        placeholder="请输入20位校验码后6位"></el-input>
-                </el-col>
-            </el-row>
-            <el-row>
-                <el-col :span="6" class='label'>
                     <span>开票日期</span>
                 </el-col>
                 <el-col :span="18">
-                    <el-date-picker v-model="enterForm.invoiceDate"
+                    <el-date-picker v-model="enterForm.invoiceDate" value-format="yyyy-MM-dd"
                         type="date" placeholder="请选择开票日期"></el-date-picker>
                 </el-col>
             </el-row>
