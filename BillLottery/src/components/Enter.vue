@@ -29,6 +29,15 @@
                 </el-col>
             </el-row>
             <el-row>
+                <el-col :span="8" class='label'>
+                    <span>校验码/识别码</span>
+                </el-col>
+                <el-col :span="16">
+                    <el-input v-model="enterForm.checkCode" size='medium'
+                        placeholder="校验码后6位或者12位识别码"></el-input>
+                </el-col>
+            </el-row>
+            <el-row>
                 <el-col :span="6" class='label'>
                     <span>开票日期</span>
                 </el-col>
@@ -89,6 +98,11 @@ export default {
                     no: '请输入发票号码',
                     reg: /^[a-zA-Z0-9]{8}$/i,
                     msg: '发票号码输入有误'
+                },
+                checkCode: {
+                    no: '请输入校验码/识别码',
+                    reg: /^[0-9]{6}$|^[0-9]{12}$/gi,
+                    msg: '校验码/识别码输入有误'
                 },
                 invoiceDate: {
                     no: '请选择开票日期'
