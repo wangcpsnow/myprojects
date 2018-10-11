@@ -101,7 +101,7 @@ export default {
                 },
                 checkCode: {
                     no: '请输入校验码/识别码',
-                    reg: /^[a-zA-Z0-9]{6}$|^[a-zA-Z0-9]{12}$/gi,
+                    reg: /^[a-zA-Z0-9]{6}$|^[a-zA-Z0-9]{12}$/i,
                     msg: '校验码/识别码输入有误'
                 },
                 invoiceDate: {
