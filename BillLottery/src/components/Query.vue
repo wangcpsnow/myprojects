@@ -23,10 +23,13 @@
                 <ul v-for='(item,index) in winData.invoiceWinQueryVos'>
                     <li>发票代码：{{item.invoiceCode}}</li>
                     <li>发票号码：{{item.invoiceNo}}</li>
-                    <li>发奖日期：{{item.invoiceDate}}</li>
+                    <li>开票日期：{{item.invoiceDate}}</li>
                     <li :class="{border: index != winData.invoiceWinQueryVos.length - 1}">获奖类别：{{item.winLevel}}</li>
                 </ul>
-                <p class="center">*领奖方式见公告信息领奖规则*</p>
+                <!-- <p class="center">*领奖方式见公告信息领奖规则*</p> -->
+                <p class="center">
+                    <a href="https://mp.weixin.qq.com/s?__biz=MzIwNTcyNDIyMg==&mid=2247486043&idx=1&sn=8ac467ddd8428486996a31c2e8bc978d&chksm=972dc50aa05a4c1ce087660539eb289e4e653346fcfef1bdf810b998e3ff83ada91df2703142&token=344336408&lang=zh_CN&scene=25#wechat_redirect">点击查看《唐县发票摇奖暂行管理办法》</a>
+                </p>
             </el-row>
         </div>
     </div>
