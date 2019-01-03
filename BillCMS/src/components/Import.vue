@@ -3,7 +3,8 @@
         <el-form ref="form" :model="form" label-width="60px">
             <el-form-item label="">
                 <el-select v-model="form.year" placeholder="请选择年份">
-                    <el-option :label="years" :value="years"></el-option>
+                    <!-- <el-option :label="years" :value="years"></el-option> -->
+                    <el-option :value="item.year" :label='item.year' v-for='(item,key) in conditionList' :key='key'></el-option>
                 </el-select>
                 <el-select v-model="form.period" placeholder="请选择期次" @change='changePeriod'>
                     <el-option :value="item" :label='item | showPerLabel' v-for='(item,key) in periods' :key='key'></el-option>
@@ -54,7 +55,8 @@
         data() {
             return {
                 form: {},
-                years: '',
+                // years: '',
+                conditionList: [],
                 periods: [],
                 winStatus: {
                     '0': '未抽奖',
@@ -75,7 +77,8 @@
             this.$http.get('/ild/admin/manage/condition')
                 .then(res => {
                     var data = res.data.data;
-                    this.years = data.conditionList[0].year;
+                    // this.years = data.conditionList[0].year;
+                    this.conditionList = data.conditionList;
                     this.periods = data.conditionList[0].peroidList;
                 });
         },
